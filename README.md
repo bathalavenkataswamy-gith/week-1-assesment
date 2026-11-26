@@ -9,7 +9,7 @@
 
 The `.env` file contains a demo API key and is excluded by `.gitignore`.
 
-Main branch: documentation retained during conflict resolution.
+Feature branch: analysis implementation and findings documented.
 
 ## Findings
 
