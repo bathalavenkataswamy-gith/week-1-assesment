@@ -47,10 +47,13 @@ def pandas_analysis():
 
     dirty = pd.read_csv(DATA / "employees_dirty.csv")
     dirty["salary"] = pd.to_numeric(dirty["salary"], errors="coerce")
+    missing_salary_count = int(dirty["salary"].isna().sum())
+    duplicate_count = int(dirty.duplicated().sum())
     dirty["salary"] = dirty["salary"].fillna(dirty["salary"].median())
     dirty = dirty.drop_duplicates()
     dirty["id"] = dirty["id"].astype(int)
     dirty["salary"] = dirty["salary"].astype(float)
+    print(f"\nCleaning: imputed {missing_salary_count} salaries; removed {duplicate_count} duplicate rows")
 
     departments = pd.read_csv(DATA / "departments.csv")
     summary = dirty.groupby("department").agg(
@@ -70,7 +73,16 @@ def pandas_analysis():
     print("\nHeadcount:")
     for _, row in summary.iterrows():
         print(f"{row['department']} {int(row['headcount'])}")
+    print(
+        "Join row counts:",
+        f"inner={len(inner_join)}",
+        f"left={len(left_join)}",
+        f"outer={len(outer_join)}",
+    )
     print("\nOuter join: department with no employees:", no_employees)
+
+    dirty.to_csv(REPORTS / "cleaned_employees.csv", index=False)
+    summary.to_csv(REPORTS / "department_summary.csv", index=False)
     return employees, dirty, departments, summary, inner_join, left_join, outer_join
 
 
@@ -119,11 +131,19 @@ def create_charts(employees, departments, summary):
     plt.savefig(REPORTS / "salary_line.png", dpi=150)
     plt.close()
 
+    employee_counts = employees.groupby("department").size()
+    largest_department = employee_counts.idxmax()
+    below_70000 = int((employees["salary"] < 70000).sum())
+    highest_paid = employees.loc[employees["salary"].idxmax()]
+    highest_average = summary.loc[summary["average_salary"].idxmax()]
     insights = [
-        "Insight: IT has the largest headcount in the original employee data.",
-        "Insight: Most employee salaries fall below 70,000.",
-        "Insight: Finance is associated with the highest individual salary.",
-        "Insight: Finance has the highest average salary among departments in the cleaned data.",
+        f"Insight: {largest_department} has the largest original headcount "
+        f"({employee_counts.max()} employees).",
+        f"Insight: {below_70000} of {len(employees)} employees earn below 70,000.",
+        f"Insight: {highest_paid['name']} has the highest individual salary "
+        f"({highest_paid['salary']:,}).",
+        f"Insight: {highest_average['department']} has the highest cleaned average salary "
+        f"({highest_average['average_salary']:,.0f}).",
     ]
     return insights
 

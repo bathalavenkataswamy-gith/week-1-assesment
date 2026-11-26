@@ -1,0 +1,5 @@
+department,headcount,average_salary,maximum_salary
+Finance,1,90000.0,90000.0
+HR,2,48500.0,52000.0
+IT,3,62333.333333333336,75000.0
+Sales,2,41000.0,52000.0
