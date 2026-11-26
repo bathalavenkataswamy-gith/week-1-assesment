@@ -18,3 +18,5 @@ Feature branch: analysis implementation and findings documented.
 - Chennai has four employees in the source data.
 - The Finance department has the highest individual and average salary.
 - Operations is the department in the outer join that has no employees.
+
+Assessment status: feature complete
