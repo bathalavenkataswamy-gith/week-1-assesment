@@ -19,4 +19,4 @@ Feature branch: analysis implementation and findings documented.
 - The Finance department has the highest individual and average salary.
 - Operations is the department in the outer join that has no employees.
 
-Assessment status: main complete
+Assessment status: merged and complete
