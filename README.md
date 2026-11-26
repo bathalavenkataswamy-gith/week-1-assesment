@@ -22,7 +22,7 @@ The `.env` file is optional for the public JSONPlaceholder API and is excluded b
 
 ## Task 4: Git and GitHub workflow
 
-The repository history records the Task 1–3 implementation, feature-branch work, a real README merge conflict and its resolution, and the final merge to `main`. The graph snapshot is in `reports/git_log.txt`.
+The repository history records the Task 1–3 implementation, feature-branch work, a real README merge conflict and its resolution, and the final merge to `main`. For this Task 3/4 completion, `feature/task-3-task-4` was pushed, reviewed in [pull request #1](https://github.com/bathalavenkataswamy-gith/week-1-assesment/pull/1), and merged to `main`. The graph and workflow evidence are in `reports/git_log.txt` and `reports/task4_git_evidence.txt`.
 
 To repeat the feature-branch workflow for new work:
 

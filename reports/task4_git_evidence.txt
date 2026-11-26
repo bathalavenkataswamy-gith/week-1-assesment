@@ -1,0 +1,9 @@
+Task 4: Git and GitHub workflow evidence
+
+Repository: https://github.com/bathalavenkataswamy-gith/week-1-assesment
+Feature branch: feature/task-3-task-4
+Pull request: https://github.com/bathalavenkataswamy-gith/week-1-assesment/pull/1
+Result: pull request merged into main
+
+The local history also records the earlier feature/analysis branch, README merge conflict, conflict resolution, and merge.
+See git_log.txt for the current branch graph.
