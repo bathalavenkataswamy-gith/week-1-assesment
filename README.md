@@ -9,6 +9,8 @@
 
 The `.env` file contains a demo API key and is excluded by `.gitignore`.
 
+Main branch: documentation retained during conflict resolution.
+
 ## Findings
 
 - IT has the largest employee headcount at three.
